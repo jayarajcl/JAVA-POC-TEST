@@ -3,6 +3,11 @@ package com.veracode.verademo.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+<<<<<<< HEAD
+=======
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+>>>>>>> 9b0c7a8 (java trust index)
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletContext;
@@ -41,6 +46,7 @@ public class ToolsController {
 
 		return "tools";
 	}
+<<<<<<< HEAD
 
 	private String ping(String host) {
 		String output = "";
@@ -73,6 +79,26 @@ public class ToolsController {
 		return output;
 	}
 
+=======
+//78-----------------------------------78----------78---------------
+	private String ping(String host) {
+    String output = "";
+    logger.info("Pinging: " + host);
+
+    try {
+        InetAddress address = InetAddress.getByName(host);
+        boolean reachable = address.isReachable(5000); // Timeout of 5 seconds
+        output = address.getHostName() + " is " + (reachable ? "reachable" : "unreachable");
+    } catch (UnknownHostException e) {
+        logger.error("Unknown host: " + e.getMessage());
+    } catch (IOException e) {
+        logger.error("Error pinging host: " + e.getMessage());
+    }
+
+    return output;
+}
+//78-------------------------------------------78-----------78---------
+>>>>>>> 9b0c7a8 (java trust index)
 	private String fortune(String fortuneFile) {
 		String cmd = "/bin/fortune " + fortuneFile;
 

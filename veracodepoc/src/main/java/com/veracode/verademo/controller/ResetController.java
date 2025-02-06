@@ -2,6 +2,10 @@ package com.veracode.verademo.controller;
 
 import java.io.BufferedReader;
 import java.io.File;
+<<<<<<< HEAD
+=======
+import java.io.FileInputStream;
+>>>>>>> 9b0c7a8 (java trust index)
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,6 +14,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+<<<<<<< HEAD
+=======
+import java.util.Properties;
+>>>>>>> 9b0c7a8 (java trust index)
 import java.util.Random;
 
 import javax.servlet.ServletContext;
@@ -36,6 +44,7 @@ public class ResetController {
 	@Autowired
 	ServletContext context;
 
+<<<<<<< HEAD
 	private static User[] users = new User[] {
 			User.create("admin", "admin", "Thats Mr Administrator to you."),
 			User.create("john", "John", "John Smith"),
@@ -65,6 +74,51 @@ public class ResetController {
 			User.create("kevin", "Kevin", "Kevin Rise"),
 			User.create("scottrum", "Scott Rumrill", "Scott Rumrill"),
 			User.create("scottsim", "Scott Simpson", "Scott Simpson") };
+=======
+	private static User[] users;
+
+	static {
+        Properties properties = new Properties();
+        try (FileInputStream input = new FileInputStream("config.properties")) {
+            properties.load(input);
+            users = new User[]{
+                User.create(properties.getProperty("user.admin.username"), properties.getProperty("user.admin.displayName"), properties.getProperty("user.admin.description")),
+                User.create(properties.getProperty("user.john.username"), properties.getProperty("user.john.displayName"), properties.getProperty("user.john.description")),
+                User.create(properties.getProperty("user.paul.username"), properties.getProperty("user.paul.displayName"), properties.getProperty("user.paul.description")),
+                User.create(properties.getProperty("user.chrisc.username"), properties.getProperty("user.chrisc.displayName"), properties.getProperty("user.chrisc.description")),
+                User.create(properties.getProperty("user.laurie.username"), properties.getProperty("user.laurie.displayName"), properties.getProperty("user.laurie.description")),
+                User.create(properties.getProperty("user.nabil.username"), properties.getProperty("user.nabil.displayName"), properties.getProperty("user.nabil.description")),
+                User.create(properties.getProperty("user.julian.username"), properties.getProperty("user.julian.displayName"), properties.getProperty("user.julian.description")),
+                User.create(properties.getProperty("user.joash.username"), properties.getProperty("user.joash.displayName"), properties.getProperty("user.joash.description")),
+                User.create(properties.getProperty("user.andrzej.username"), properties.getProperty("user.andrzej.displayName"), properties.getProperty("user.andrzej.description")),
+                User.create(properties.getProperty("user.april.username"), properties.getProperty("user.april.displayName"), properties.getProperty("user.april.description")),
+                User.create(properties.getProperty("user.armando.username"), properties.getProperty("user.armando.displayName"), properties.getProperty("user.armando.description")),
+                User.create(properties.getProperty("user.ben.username"), properties.getProperty("user.ben.displayName"), properties.getProperty("user.ben.description")),
+                User.create(properties.getProperty("user.brian.username"), properties.getProperty("user.brian.displayName"), properties.getProperty("user.brian.description")),
+                User.create(properties.getProperty("user.caitlin.username"), properties.getProperty("user.caitlin.displayName"), properties.getProperty("user.caitlin.description")),
+                User.create(properties.getProperty("user.christraut.username"), properties.getProperty("user.christraut.displayName"), properties.getProperty("user.christraut.description")),
+                User.create(properties.getProperty("user.christyson.username"), properties.getProperty("user.christyson.displayName"), properties.getProperty("user.christyson.description")),
+                User.create(properties.getProperty("user.clint.username"), properties.getProperty("user.clint.displayName"), properties.getProperty("user.clint.description")),
+                User.create(properties.getProperty("user.cody.username"), properties.getProperty("user.cody.displayName"), properties.getProperty("user.cody.description")),
+                User.create(properties.getProperty("user.derek.username"), properties.getProperty("user.derek.displayName"), properties.getProperty("user.derek.description")),
+                User.create(properties.getProperty("user.glenn.username"), properties.getProperty("user.glenn.displayName"), properties.getProperty("user.glenn.description")),
+                User.create(properties.getProperty("user.grant.username"), properties.getProperty("user.grant.displayName"), properties.getProperty("user.grant.description")),
+                User.create(properties.getProperty("user.gregory.username"), properties.getProperty("user.gregory.displayName"), properties.getProperty("user.gregory.description")),
+                User.create(properties.getProperty("user.jacob.username"), properties.getProperty("user.jacob.displayName"), properties.getProperty("user.jacob.description")),
+                User.create(properties.getProperty("user.jeremy.username"), properties.getProperty("user.jeremy.displayName"), properties.getProperty("user.jeremy.description")),
+                User.create(properties.getProperty("user.johnny.username"), properties.getProperty("user.johnny.displayName"), properties.getProperty("user.johnny.description")),
+                User.create(properties.getProperty("user.kevin.username"), properties.getProperty("user.kevin.displayName"), properties.getProperty("user.kevin.description")),
+                User.create(properties.getProperty("user.scottrum.username"), properties.getProperty("user.scottrum.displayName"), properties.getProperty("user.scottrum.description")),
+                User.create(properties.getProperty("user.scottsim.username"), properties.getProperty("user.scottsim.displayName"), properties.getProperty("user.scottsim.description"))
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+        }
+    
+
+>>>>>>> 9b0c7a8 (java trust index)
 
 	@RequestMapping(value = "/reset", method = RequestMethod.GET)
 	public String showReset() {
